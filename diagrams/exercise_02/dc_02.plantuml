@@ -1,0 +1,64 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title Diagrama 2
+
+class Aseguradora {
+
+    + iterarVehiculos()
+}
+
+note left of Aseguradora::iterarVehiculos
+
+r = {}
+
+for v in vehiculos
+  r.add( v.asegurar() )
+end
+
+^r
+end note
+
+interface Vehiculo {
+    + asegurar() : Seguro
+    + consultor(Consultor)
+}
+
+class Camion {
+    - referencia
+    - valor
+
+    - esValorMayorReferencia() : boolean
+
+    + Camion(valorDelVehiculo, valorReferencia)
+    + consultor(Consultor)
+
+    + asegurar() : Seguro
+}
+
+class Auto {
+    - referencia
+    - valor
+
+    - esValorMayorReferencia() : boolean
+
+    + Auto(valorDelVehiculo, valorReferencia)
+    + consultor(Consultor)
+
+    + asegurar() : Seguro
+}
+
+class Consultor {
+
+    + asegurar(Vehiculo) : Seguro
+}
+
+Consultor "1" -o Camion
+Consultor "1" -o Auto
+
+Aseguradora *-- "*" Vehiculo
+
+Vehiculo <|.. Camion
+Vehiculo <|.. Auto
+
+@enduml

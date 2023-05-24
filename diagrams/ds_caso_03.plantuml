@@ -1,0 +1,45 @@
+@startuml
+
+title Caso 2
+
+create "c: Cemento"
+": TestCase" -> "c: Cemento": Cemento(5 * 800 + 5 * 100)
+
+create "n: Caño"
+": TestCase" -> "n: Caño": Caño(5 * 900 + + 5 * 500)
+ 
+create "p: Pintura"
+": TestCase" -> "p: Pintura": Pintura(5 * 2900 + 5 * 2500)
+ 
+create "a: Almacen"
+": TestCase" -> "a: Almacen": Almacen(c, n, p)
+
+create ": Condominio"
+
+": TestCase" -> ": Condominio": Condominio(5 /* edificios */, 5 /* casas */)
+
+": TestCase" -> ": Condominio": construirCon(a)
+
+loop para cada edificio
+    create ": Edificio"
+    ": Condominio" -> ": Edificio": Edificio(5)
+    ": Condominio" -> ": Edificio": construirCon(a)
+    return
+    note right
+        Misma secuencia "Caso 2"
+    end note
+end
+
+loop para cada casa
+    create ": Casa"
+    ": Condominio" -> ": Casa": Casa(5)
+    ": Condominio" -> ": Casa": construirCon(a)
+    return
+    note right
+        Misma secuencia "Caso 1"
+    end note
+end
+
+": Condominio" --> ": TestCase":
+
+@enduml

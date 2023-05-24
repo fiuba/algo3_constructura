@@ -1,10 +1,8 @@
 @startuml
 
 class Complejo {
-
-    + Almacen construirCon(Almacen)
-}
-interface Construccion {
+    - nroEdificios
+    - nroCasas
 
     + Almacen construirCon(Almacen)
 }
@@ -17,13 +15,18 @@ class Almacen {
 }
 
 class Casa {
+    - nroAmbientes
 
     + Casa(ambientes)
     + Almacen construirCon(Almacen)
+
+    - iniciarRequisitosAmbiente()
+    - iniciarRequisistosBase()
 }
 
 
 class Edificio {
+    - nroPisos
 
     + Edificio(int nroPisos)
     + Almacen construirCon(Almacen almacen)
@@ -62,18 +65,17 @@ class Caño {
     + equals(Object)
 }
 
-Almacen o- "*" Material
-Material "3" ---* Casa: "base "
-Material "3" ---* Casa: "ambiente "
+Almacen o-- "*" Material
+Material "3" -* Casa: "base "
+Material "3" -* Casa: "ambiente "
 
 Edificio *- "3" Material: "\t\tbase "
 
-Pintura ----|> Material
-Caño ----|> Material
-Cemento ----|> Material
+Material <|-- Pintura
+Material <|-- Caño
+Material <|-- Cemento
 
-Complejo o-- "*" Construccion
+Complejo ..> "<use>" Casa
+Complejo ..> "<use>" Edificio
 
-Construccion <|--- Casa
-Construccion <|--- Edificio
 @enduml

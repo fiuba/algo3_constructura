@@ -1,25 +1,29 @@
 package ar.edu.uba.fi;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Edificio {
 
-    private final ArrayList<Material> base;
+    private ArrayList<Material> base;
     private int nroPisos;
 
     public Edificio(int nroPisos) {
         this.nroPisos = nroPisos;
 
+        iniciarRequisitosBase();
+
+    }
+
+    private void iniciarRequisitosBase() {
         this.base = new ArrayList<>();
         this.base.add(new Cemento(100));
         this.base.add(new Caño(100));
         this.base.add(new Pintura(100));
-
     }
 
     private void consumirBase(Almacen almacen) {
+
         almacen.consumir(this.base);
     }
     public Almacen construirCon(Almacen almacen) {
