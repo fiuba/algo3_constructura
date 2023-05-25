@@ -1,0 +1,81 @@
+@startuml
+
+class Complejo {
+    - nroEdificios
+    - nroCasas
+
+    + Almacen construirCon(Almacen)
+}
+
+class Almacen {
+
+    + Almacen(List<materiales> materiales)
+    + consumir(consumos : List<Material>
+    + equals(Object)
+}
+
+class Casa {
+    - nroAmbientes
+
+    + Casa(ambientes)
+    + Almacen construirCon(Almacen)
+
+    - iniciarRequisitosAmbiente()
+    - iniciarRequisistosBase()
+}
+
+
+class Edificio {
+    - nroPisos
+
+    + Edificio(int nroPisos)
+    + Almacen construirCon(Almacen almacen)
+
+    - consumirBase(Almacen)
+    - consumirPlanta(Almacen)
+    - consumirVivienda(Almacen)
+}
+
+interface Material {
+
+    + reducirCantidadEquivalenteA(Material m);
+}
+
+class Cemento {
+    - unidades
+
+    + Cemento(unidades)
+    + reducirCantidadEquivalenteA(Material gasto)
+    + equals(Object)
+}
+
+class Pintura {
+    - unidades
+
+    + Pintura(unidades)
+    + reducirCantidadEquivalenteA(Material gasto)
+    + equals(Object)
+}
+
+class Caño {
+    - unidades
+
+    + Pintura(unidades)
+    + reducirCantidadEquivalenteA(Material gasto)
+    + equals(Object)
+}
+
+Almacen o-- "*" Material
+Material "3" -* Casa: "base "
+Material "3" -* Casa: "ambiente "
+
+Edificio *- "3" Material: "\t\tbase "
+
+Material <|-- Pintura
+Material <|-- Caño
+Material <|-- Cemento
+
+Complejo ..> "<use>" Casa
+Complejo ..> "<use>" Edificio
+
+@enduml

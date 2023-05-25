@@ -41,3 +41,8 @@ almacenes luego de:
 más que no se utilicen en los diagramas de secuencia de los casos de uso.
 - Diagrama de secuencia para cada uno de los casos de uso.
 - Código de la prueba para cada uno de los casos de uso.
+
+# Soluciones
+
+- [Ejercicio 1](diagrams/exercise_01)
+- [Ejercicio 2](diagrams/exercise_02)
