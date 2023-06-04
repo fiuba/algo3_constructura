@@ -51,7 +51,7 @@ public class ConstructuraTest {
         Complejo c = new Complejo(2, 1);
 
         Almacen restante = c.construirCon(almacen);
-        assertEquals(
+j        assertEquals(
                 new Almacen(new Cemento(0), new Caño(0), new Pintura(0)),
                 restante
         );
