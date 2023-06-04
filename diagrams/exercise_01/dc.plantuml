@@ -1,6 +1,6 @@
 @startuml
 
-class Complejo {
+class Condominio {
     - nroEdificios
     - nroCasas
 
@@ -75,7 +75,7 @@ Material <|-- Pintura
 Material <|-- Caño
 Material <|-- Cemento
 
-Complejo ..> "<use>" Casa
-Complejo ..> "<use>" Edificio
+Condominio ..> "<<instanciate>" Casa
+Condominio ..> "<<instanciate>>" Edificio
 
 @enduml
